@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DrawController">
-   <children>
       <Text layoutX="28.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current pi value" />
       <Text layoutX="28.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dots count" wrappingWidth="116.11322021484375" />
       <TextField fx:id="dotsCountTextField" layoutX="132.0" layoutY="323.0" prefHeight="25.0" prefWidth="75.0" />
@@ -18,9 +17,8 @@
       <Button layoutX="170.0" layoutY="289.0" mnemonicParsing="false" text="x2" />
       <Button layoutX="214.0" layoutY="289.0" mnemonicParsing="false" text="x3" />
       <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToSetup" text="&lt;-" />
-      <Rectangle fx:id="square" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="50.0" layoutY="14.0" stroke="#ff00c8" strokeType="INSIDE" width="200.0" />
-      <Circle fx:id="paneCircle" centerX="150.0" centerY="114.0" fill="WHITE" radius="100.0" stroke="#001aff" strokeType="INSIDE" />
+      <Rectangle fx:id="square" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="50.0" layoutY="14.0" stroke="#ff62e0" strokeType="INSIDE" width="200.0" />
+      <Circle fx:id="paneCircle" centerX="150.0" centerY="114.0" fill="WHITE" radius="100.0" stroke="DEEPSKYBLUE" strokeType="INSIDE" />
       <Button layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onAction="#onStartButtonPressed" prefHeight="25.0" prefWidth="58.0" text="start" />
       <Button layoutX="202.0" layoutY="236.0" mnemonicParsing="false" text="restart" />
-   </children>
 </AnchorPane>
