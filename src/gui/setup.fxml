@@ -6,15 +6,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: #767475;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SetupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: ffd8c8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SetupController">
       <Button layoutX="95.0" layoutY="335.0" mnemonicParsing="false" onAction="#onCountButtonPressed" prefHeight="25.0" prefWidth="149.0" text="Count" />
-      <Text fill="WHITE" layoutX="111.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dots count" wrappingWidth="118.1366195678711">
+      <Text fill="#534858" layoutX="111.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dots count" wrappingWidth="118.1366195678711">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <AnchorPane layoutY="-1.0" prefHeight="107.0" prefWidth="340.0" style="-fx-background-color: #000000;" AnchorPane.topAnchor="0.0">
-            <Text fill="WHITE" layoutX="17.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approxiate Pi value" wrappingWidth="305.82421875" AnchorPane.topAnchor="23.0">
+      <AnchorPane layoutY="-1.0" prefHeight="107.0" prefWidth="340.0" style="-fx-background-color: fc6453;" AnchorPane.topAnchor="0.0">
+            <Text fill="#534858" layoutX="17.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approxiate Pi value" wrappingWidth="305.82421875" AnchorPane.topAnchor="23.0">
                <font>
                   <Font size="36.0" />
                </font>

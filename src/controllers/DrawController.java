@@ -35,7 +35,7 @@ public class DrawController {
     private boolean isDrawing;
     private int circleDots = 0;
     private int totalDots = 0;
-    private int speed=100;
+    private int sleepTime_Millis = 100;
 
     public void setupDrawScene(MainApp mainApp, AnchorPane drawAnchorPane, int dotsCount) {
         DrawController.mainApp = mainApp;
@@ -49,32 +49,29 @@ public class DrawController {
     }
 
     @FXML
-    void x1speedChoosed(ActionEvent event) {
-        speed=100;
+    void on_x1_SpeedChoosed(ActionEvent event) {
+        sleepTime_Millis = 50;
     }
 
     @FXML
-    void x2speedChoosed(ActionEvent event) {
-        speed=50;
+    void on_x5_SpeedChoosed(ActionEvent event) {
+        sleepTime_Millis = 10;
     }
 
     @FXML
-    void x4speedChoosed(ActionEvent event) {
-        speed=25;
+    void on_x10_SpeedChoosed(ActionEvent event) {
+        sleepTime_Millis = 5;
     }
 
     @FXML
-    void onStartButtonPressed() {
-        if (isDrawing) {
-            start_stop_button.setText("start");
-            isDrawing = false;
-        } else {
-            isDrawing = true;
-            start_stop_button.setText("stop");
-        }
+    void on_max_SpeedChoosed(ActionEvent event) {
+        sleepTime_Millis = 1;
+    }
+
+    private void drawDots() {
         ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.execute(() -> {
-            while (totalDots <= dotsCountToApproximating && isDrawing) {
+            while (totalDots < dotsCountToApproximating && isDrawing) {
                 double x = ThreadLocalRandom.current().nextInt(-R, R);
                 double y = ThreadLocalRandom.current().nextInt(-R, R);
                 totalDots++;
@@ -87,9 +84,8 @@ public class DrawController {
                     dot.setFill(Color.rgb(255, 97, 223));
 
                 float pi = (float) 4.0 * circleDots / totalDots;
-
                 try {
-                    Thread.sleep(speed);
+                    Thread.sleep(sleepTime_Millis);
                 } catch (InterruptedException exception) {
                     exception.printStackTrace();
                 }
@@ -97,7 +93,9 @@ public class DrawController {
                     drawAnchorPane.getChildren().add(dot);
                     totalDotsCountTextField.setText(String.valueOf(totalDots));
                     circleDotsCountTextField.setText(String.valueOf(circleDots));
-                    piValueTextField.setText(String.format("%.6f",pi));
+                    piValueTextField.setText(String.format("%.6f", pi));
+                    if (totalDots == dotsCountToApproximating)
+                        start_stop_button.setText("restart");
                 });
             }
         });
@@ -105,18 +103,44 @@ public class DrawController {
     }
 
     @FXML
+    void onStartButtonPressed() {
+        if (totalDots == dotsCountToApproximating) {
+            sleepTime_Millis = 100;
+            isDrawing = true;
+            clearFields();
+        }
+        if (isDrawing) {
+            start_stop_button.setText("start");
+            isDrawing = false;
+        } else {
+            isDrawing = true;
+            start_stop_button.setText("stop");
+        }
+
+        drawDots();
+    }
+
+    @FXML
     void onClearButtonPressed(ActionEvent event) {
+        clearFields();
+    }
+
+    private void clearFields() {
         isDrawing = false;
-        circleDotsCountTextField.setText("");
-        totalDotsCountTextField.setText("");
-        piValueTextField.setText("");
         circleDots = 0;
         totalDots = 0;
-        List<Node> toRemove = new ArrayList<>();
-        for (Node shape : drawAnchorPane.getChildren())
-            if (shape.getClass() == Circle.class && shape != paneCircle)
-                toRemove.add(shape);
-        drawAnchorPane.getChildren().removeAll(toRemove);
+        circleDotsCountTextField.setText("");
+        totalDotsCountTextField.setText("");
+        Platform.runLater(() -> {
+            List<Node> toRemove = new ArrayList<>();
+            for (Node shape : drawAnchorPane.getChildren())
+                if (shape.getClass() == Circle.class && shape != paneCircle)
+                    toRemove.add(shape);
+            drawAnchorPane.getChildren().removeAll(toRemove);
+            piValueTextField.setText("");
+        });
 
     }
+
+
 }
