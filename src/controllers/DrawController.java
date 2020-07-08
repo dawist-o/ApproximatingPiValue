@@ -76,7 +76,9 @@ public class DrawController {
                 double y = ThreadLocalRandom.current().nextInt(-R, R);
                 totalDots++;
 
-                Circle dot = new Circle(paneCircle.getCenterX() + x, paneCircle.getCenterY() + y, 1, null);
+                Circle dot = new Circle(paneCircle.getCenterX() + paneCircle.getLayoutX() + x,
+                        paneCircle.getCenterY() + paneCircle.getLayoutY() + y, 1, null);
+
                 if (Math.sqrt(x * x + y * y) < R) {
                     circleDots++;
                     dot.setFill(Color.rgb(0, 191, 255));

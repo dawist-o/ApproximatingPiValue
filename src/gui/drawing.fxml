@@ -17,7 +17,7 @@
       <Button layoutX="288.0" layoutY="101.0" mnemonicParsing="false" onAction="#on_x10_SpeedChoosed" prefHeight="25.0" prefWidth="38.0" text="x10" />
       <Button layoutX="-1.0" mnemonicParsing="false" onAction="#backToSetup" text="&lt;-" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="72.0" layoutY="13.0" stroke="#ff62e0" strokeType="INSIDE" width="200.0" />
-      <Circle fx:id="paneCircle" centerX="150.0" centerY="114.0" fill="WHITE" layoutX="22.0" layoutY="-1.0" radius="100.0" stroke="DEEPSKYBLUE" strokeType="INSIDE" />
+      <Circle fx:id="paneCircle" centerX="150.0" centerY="114.0" fill="WHITE" radius="100.0" stroke="DEEPSKYBLUE" strokeType="INSIDE" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="14.0" />
       <Button fx:id="start_stop_button" layoutX="69.0" layoutY="238.0" mnemonicParsing="false" onAction="#onStartButtonPressed" prefHeight="25.0" prefWidth="58.0" text="start" />
       <Button layoutX="213.0" layoutY="238.0" mnemonicParsing="false" onAction="#onClearButtonPressed" prefHeight="25.0" prefWidth="58.0" text="clear" />
    <Text layoutX="74.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle dots count" wrappingWidth="102.275390625" />
