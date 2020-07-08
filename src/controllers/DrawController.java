@@ -3,41 +3,24 @@ package controllers;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Light;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DrawController {
-    private static MainApp mainApp;
-    private static AnchorPane drawAnchorPane;
-    private int dotsCount;
-    private final int R = 100;
-
     @FXML
     private TextField dotsCountTextField;
-
     @FXML
     private TextField piValueTextField;
-
-    private static void run() {
-
-    }
-
-    public void setupDrawScene(MainApp mainApp, AnchorPane drawAnchorPane, int dotsCount) {
-        DrawController.mainApp = mainApp;
-        DrawController.drawAnchorPane = drawAnchorPane;
-        this.dotsCount = dotsCount;
-    }
-
 
     @FXML
     void backToSetup(ActionEvent event) {
@@ -45,53 +28,78 @@ public class DrawController {
     }
 
     @FXML
-    private Rectangle square;
-
-    @FXML
     private Circle paneCircle;
-    private boolean isRunning;
-    private int circlePoints = 0;
-    private int totalPoints = 0;
+    @FXML
+    private Button start_stop_button;
 
-    void addDot() {
-        double x = ThreadLocalRandom.current().nextInt(-R, R);
-        double y = ThreadLocalRandom.current().nextInt(-R, R);
-        totalPoints++;
-        Circle dot = new Circle(paneCircle.getCenterX() + x, paneCircle.getCenterY() + y, 1, null);
-        if (Math.sqrt(x * x + y * y) < R) {
-            circlePoints++;
-            dot.setFill(Color.rgb(0, 191, 255));
-        } else
-            dot.setFill(Color.rgb(255, 97, 223));
-        drawAnchorPane.getChildren().add(dot);
-        float pi = (float) 4.0 * circlePoints / totalPoints;
-        piValueTextField.setText(Double.toString(pi));
+    private static MainApp mainApp;
+    private static AnchorPane drawAnchorPane;
+    private int dotsCountToApproximating;
+    private final int R = 100;
+    private boolean isDrawing;
+    private int circleDots = 0;
+    private int totalDots = 0;
+
+    public void setupDrawScene(MainApp mainApp, AnchorPane drawAnchorPane, int dotsCount) {
+        DrawController.mainApp = mainApp;
+        DrawController.drawAnchorPane = drawAnchorPane;
+        this.dotsCountToApproximating = dotsCount;
     }
+
+    private int play_pause_iterator = 0;
 
     @FXML
     void onStartButtonPressed() {
-        Platform.runLater(() -> {
-            long desiredFrameRateTime = 1000 / 60; //желаемое количетсво кадров в секунду (60 fps)
-            long currentTime = System.currentTimeMillis();
-            long lastTime = currentTime - desiredFrameRateTime;
-            long unprocessedTime = 0;        //необработанное время
-            int i = 0;
-            while (i <= dotsCount) {
-                currentTime = System.currentTimeMillis();  //текущее время
-                unprocessedTime += currentTime - lastTime; //время прошедшее без обработки
-                lastTime = currentTime;
-                while (unprocessedTime >= desiredFrameRateTime) {
-                    unprocessedTime -= desiredFrameRateTime;
-                }
-                addDot();
-                /*try {
-                    Thread.sleep(20);
+        if (isDrawing) {
+            start_stop_button.setText("start");
+            isDrawing = false;
+        } else {
+            isDrawing = true;
+            start_stop_button.setText("stop");
+        }
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.execute(() -> {
+            while (totalDots <= dotsCountToApproximating && isDrawing) {
+                double x = ThreadLocalRandom.current().nextInt(-R, R);
+                double y = ThreadLocalRandom.current().nextInt(-R, R);
+                totalDots++;
+
+                Circle dot = new Circle(paneCircle.getCenterX() + x, paneCircle.getCenterY() + y, 1, null);
+                if (Math.sqrt(x * x + y * y) < R) {
+                    circleDots++;
+                    dot.setFill(Color.rgb(0, 191, 255));
+                } else
+                    dot.setFill(Color.rgb(255, 97, 223));
+
+                float pi = (float) 4.0 * circleDots / totalDots;
+
+                try {
+                    Thread.sleep(200);
                 } catch (InterruptedException exception) {
                     exception.printStackTrace();
-                }*/
-                dotsCountTextField.setText(Integer.toString(i));
-                i++;
+                }
+                Platform.runLater(() -> {
+                    drawAnchorPane.getChildren().add(dot);
+                    dotsCountTextField.setText("all dots " + totalDots + " circle dots " + circleDots);//.valueOf(play_pause_iterator));
+                    piValueTextField.setText(Double.toString(pi));
+                });
             }
         });
+        executorService.shutdown();
+    }
+
+    @FXML
+    void onClearButtonPressed(ActionEvent event) {
+        isDrawing = false;
+        dotsCountTextField.setText("");
+        piValueTextField.setText("");
+        circleDots = 0;
+        totalDots = 0;
+        List<Node> toRemove = new ArrayList<>();
+        for (Node shape : drawAnchorPane.getChildren())
+            if (shape.getClass() == Circle.class && shape != paneCircle)
+                toRemove.add(shape);
+        drawAnchorPane.getChildren().removeAll(toRemove);
+
     }
 }
