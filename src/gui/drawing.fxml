@@ -8,17 +8,18 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DrawController">
-      <Text layoutX="28.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current pi value" />
-      <Text layoutX="28.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dots count" wrappingWidth="116.11322021484375" />
-      <TextField fx:id="dotsCountTextField" layoutX="132.0" layoutY="323.0" prefHeight="25.0" prefWidth="200.0" />
-      <TextField fx:id="piValueTextField" layoutX="132.0" layoutY="360.0" prefHeight="25.0" prefWidth="116.0" />
-      <Text layoutX="28.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Speed" wrappingWidth="47.713565826416016" />
-      <Button layoutX="132.0" layoutY="289.0" mnemonicParsing="false" text="x1" />
-      <Button layoutX="170.0" layoutY="289.0" mnemonicParsing="false" text="x2" />
-      <Button layoutX="214.0" layoutY="289.0" mnemonicParsing="false" text="x3" />
+      <Text layoutX="25.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Approxiate pi value" />
+      <Text layoutX="25.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total dots count" wrappingWidth="102.275390625" />
+      <TextField fx:id="totalDotsCountTextField" layoutX="145.0" layoutY="320.0" prefHeight="25.0" prefWidth="75.0" />
+      <TextField fx:id="piValueTextField" layoutX="145.0" layoutY="358.0" prefHeight="25.0" prefWidth="75.0" />
+      <Button layoutX="258.0" layoutY="26.0" mnemonicParsing="false" onAction="#x1speedChoosed" text="x1" />
+      <Button layoutX="258.0" layoutY="64.0" mnemonicParsing="false" onAction="#x2speedChoosed" text="x2" />
+      <Button layoutX="258.0" layoutY="101.0" mnemonicParsing="false" onAction="#x4speedChoosed" text="x4" />
       <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToSetup" text="&lt;-" />
-      <Rectangle fx:id="square" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="50.0" layoutY="14.0" stroke="#ff62e0" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="50.0" layoutY="14.0" stroke="#ff62e0" strokeType="INSIDE" width="200.0" />
       <Circle fx:id="paneCircle" centerX="150.0" centerY="114.0" fill="WHITE" radius="100.0" stroke="DEEPSKYBLUE" strokeType="INSIDE" />
-      <Button fx:id="start_stop_button" layoutX="47.0" layoutY="236.0" mnemonicParsing="false" onAction="#onStartButtonPressed" prefHeight="25.0" prefWidth="58.0" text="start" />
-      <Button layoutX="202.0" layoutY="236.0" mnemonicParsing="false" onAction="#onClearButtonPressed" text="clear" />
+      <Button fx:id="start_stop_button" layoutX="47.0" layoutY="223.0" mnemonicParsing="false" onAction="#onStartButtonPressed" prefHeight="25.0" prefWidth="58.0" text="start" />
+      <Button layoutX="203.0" layoutY="223.0" mnemonicParsing="false" onAction="#onClearButtonPressed" text="clear" />
+   <Text layoutX="28.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle dots count" wrappingWidth="102.275390625" />
+   <TextField fx:id="circleDotsCountTextField" layoutX="145.0" layoutY="281.0" prefHeight="25.0" prefWidth="75.0" />
 </AnchorPane>

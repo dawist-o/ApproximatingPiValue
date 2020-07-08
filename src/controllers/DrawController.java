@@ -18,15 +18,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class DrawController {
     @FXML
-    private TextField dotsCountTextField;
+    public TextField totalDotsCountTextField;
+    @FXML
+    public TextField circleDotsCountTextField;
     @FXML
     private TextField piValueTextField;
-
-    @FXML
-    void backToSetup(ActionEvent event) {
-        mainApp.showSetup();
-    }
-
     @FXML
     private Circle paneCircle;
     @FXML
@@ -39,6 +35,7 @@ public class DrawController {
     private boolean isDrawing;
     private int circleDots = 0;
     private int totalDots = 0;
+    private int speed=100;
 
     public void setupDrawScene(MainApp mainApp, AnchorPane drawAnchorPane, int dotsCount) {
         DrawController.mainApp = mainApp;
@@ -46,7 +43,25 @@ public class DrawController {
         this.dotsCountToApproximating = dotsCount;
     }
 
-    private int play_pause_iterator = 0;
+    @FXML
+    void backToSetup(ActionEvent event) {
+        mainApp.showSetup();
+    }
+
+    @FXML
+    void x1speedChoosed(ActionEvent event) {
+        speed=100;
+    }
+
+    @FXML
+    void x2speedChoosed(ActionEvent event) {
+        speed=50;
+    }
+
+    @FXML
+    void x4speedChoosed(ActionEvent event) {
+        speed=25;
+    }
 
     @FXML
     void onStartButtonPressed() {
@@ -74,14 +89,15 @@ public class DrawController {
                 float pi = (float) 4.0 * circleDots / totalDots;
 
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(speed);
                 } catch (InterruptedException exception) {
                     exception.printStackTrace();
                 }
                 Platform.runLater(() -> {
                     drawAnchorPane.getChildren().add(dot);
-                    dotsCountTextField.setText("all dots " + totalDots + " circle dots " + circleDots);//.valueOf(play_pause_iterator));
-                    piValueTextField.setText(Double.toString(pi));
+                    totalDotsCountTextField.setText(String.valueOf(totalDots));
+                    circleDotsCountTextField.setText(String.valueOf(circleDots));
+                    piValueTextField.setText(String.format("%.6f",pi));
                 });
             }
         });
@@ -91,7 +107,8 @@ public class DrawController {
     @FXML
     void onClearButtonPressed(ActionEvent event) {
         isDrawing = false;
-        dotsCountTextField.setText("");
+        circleDotsCountTextField.setText("");
+        totalDotsCountTextField.setText("");
         piValueTextField.setText("");
         circleDots = 0;
         totalDots = 0;
