@@ -12,9 +12,9 @@
       <Text layoutX="74.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total dots count" wrappingWidth="102.275390625" />
       <TextField fx:id="totalDotsCountTextField" layoutX="194.0" layoutY="336.0" prefHeight="25.0" prefWidth="75.0" />
       <TextField fx:id="piValueTextField" layoutX="194.0" layoutY="374.0" prefHeight="25.0" prefWidth="75.0" />
-      <Button layoutX="288.0" layoutY="34.0" mnemonicParsing="false" onAction="#on_x1_SpeedChoosed" prefHeight="25.0" prefWidth="38.0" text="x1" />
-      <Button layoutX="288.0" layoutY="67.0" mnemonicParsing="false" onAction="#on_x5_SpeedChoosed" prefHeight="25.0" prefWidth="38.0" text="x5" />
-      <Button layoutX="288.0" layoutY="101.0" mnemonicParsing="false" onAction="#on_x10_SpeedChoosed" prefHeight="25.0" prefWidth="38.0" text="x10" />
+      <Button layoutX="288.0" layoutY="34.0" mnemonicParsing="false" onAction="#on_x1_SpeedPressed" prefHeight="25.0" prefWidth="38.0" text="x1" />
+      <Button layoutX="288.0" layoutY="67.0" mnemonicParsing="false" onAction="#on_x5_SpeedPressed" prefHeight="25.0" prefWidth="38.0" text="x5" />
+      <Button layoutX="288.0" layoutY="101.0" mnemonicParsing="false" onAction="#on_x10_SpeedPressed" prefHeight="25.0" prefWidth="38.0" text="x10" />
       <Button layoutX="-1.0" mnemonicParsing="false" onAction="#backToSetup" text="&lt;-" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" layoutX="72.0" layoutY="13.0" stroke="#ff62e0" strokeType="INSIDE" width="200.0" />
       <Circle fx:id="paneCircle" centerX="150.0" centerY="114.0" fill="WHITE" radius="100.0" stroke="DEEPSKYBLUE" strokeType="INSIDE" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="14.0" />
@@ -22,5 +22,5 @@
       <Button layoutX="213.0" layoutY="238.0" mnemonicParsing="false" onAction="#onClearButtonPressed" prefHeight="25.0" prefWidth="58.0" text="clear" />
    <Text layoutX="74.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Circle dots count" wrappingWidth="102.275390625" />
    <TextField fx:id="circleDotsCountTextField" layoutX="194.0" layoutY="297.0" prefHeight="25.0" prefWidth="75.0" />
-   <Button layoutX="288.0" layoutY="138.0" mnemonicParsing="false" onAction="#on_max_SpeedChoosed" text="max" />
+   <Button layoutX="288.0" layoutY="138.0" mnemonicParsing="false" onAction="#on_max_SpeedPressed" text="max" />
 </AnchorPane>

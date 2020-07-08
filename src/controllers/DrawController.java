@@ -49,26 +49,27 @@ public class DrawController {
     }
 
     @FXML
-    void on_x1_SpeedChoosed(ActionEvent event) {
+    void on_x1_SpeedPressed(ActionEvent event) {
         sleepTime_Millis = 50;
     }
 
     @FXML
-    void on_x5_SpeedChoosed(ActionEvent event) {
+    void on_x5_SpeedPressed(ActionEvent event) {
         sleepTime_Millis = 10;
     }
 
     @FXML
-    void on_x10_SpeedChoosed(ActionEvent event) {
+    void on_x10_SpeedPressed(ActionEvent event) {
         sleepTime_Millis = 5;
     }
 
     @FXML
-    void on_max_SpeedChoosed(ActionEvent event) {
+    void on_max_SpeedPressed(ActionEvent event) {
         sleepTime_Millis = 1;
     }
 
     private void drawDots() {
+        //executorService  ~~ new Thread.start(()->{.....})
         ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.execute(() -> {
             while (totalDots < dotsCountToApproximating && isDrawing) {
@@ -118,7 +119,6 @@ public class DrawController {
             isDrawing = true;
             start_stop_button.setText("stop");
         }
-
         drawDots();
     }
 
@@ -133,16 +133,11 @@ public class DrawController {
         totalDots = 0;
         circleDotsCountTextField.setText("");
         totalDotsCountTextField.setText("");
-        Platform.runLater(() -> {
-            List<Node> toRemove = new ArrayList<>();
-            for (Node shape : drawAnchorPane.getChildren())
-                if (shape.getClass() == Circle.class && shape != paneCircle)
-                    toRemove.add(shape);
-            drawAnchorPane.getChildren().removeAll(toRemove);
-            piValueTextField.setText("");
-        });
-
+        List<Node> toRemove = new ArrayList<>();
+        for (Node shape : drawAnchorPane.getChildren())
+            if (shape.getClass() == Circle.class && shape != paneCircle)
+                toRemove.add(shape);
+        drawAnchorPane.getChildren().removeAll(toRemove);
+        piValueTextField.setText("");
     }
-
-
 }
