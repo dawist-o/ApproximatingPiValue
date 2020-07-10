@@ -7,8 +7,8 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: ffd8c8;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SetupController">
-      <Button layoutX="95.0" layoutY="335.0" mnemonicParsing="false" onAction="#onCountButtonPressed" prefHeight="25.0" prefWidth="149.0" text="Count" />
-      <Text fill="#534858" layoutX="111.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dots count" wrappingWidth="118.1366195678711">
+      <Button layoutX="95.0" layoutY="368.0" mnemonicParsing="false" onAction="#onCountButtonPressed" prefHeight="25.0" prefWidth="149.0" text="Count" />
+      <Text fill="#534858" layoutX="111.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dots count" wrappingWidth="118.1366195678711">
          <font>
             <Font size="24.0" />
          </font>
@@ -20,7 +20,9 @@
                </font>
             </Text>
       </AnchorPane>
-      <TextField fx:id="dotsCountTextField" alignment="CENTER" editable="false" layoutX="95.0" layoutY="218.0" prefHeight="25.0" prefWidth="149.0" text="2000" />
-      <Button layoutX="95.0" layoutY="256.0" mnemonicParsing="false" onAction="#increaseDotsCount" prefHeight="25.0" prefWidth="149.0" text="+2000" />
-      <Button layoutX="95.0" layoutY="182.0" mnemonicParsing="false" onAction="#decreaseDotsCount" prefHeight="25.0" prefWidth="149.0" text="-2000" />
+      <TextField fx:id="dotsCountTextField" alignment="CENTER" editable="false" layoutX="95.0" layoutY="257.0" prefHeight="25.0" prefWidth="149.0" text="5000" />
+      <Button layoutX="95.0" layoutY="293.0" mnemonicParsing="false" onAction="#increaseDotsCountBy_5k" prefHeight="25.0" prefWidth="149.0" text="+5000" />
+      <Button layoutX="95.0" layoutY="225.0" mnemonicParsing="false" onAction="#decreaseDotsCountBy_5k" prefHeight="25.0" prefWidth="149.0" text="-5000" />
+   <Button layoutX="95.0" layoutY="191.0" mnemonicParsing="false" onAction="#decreaseDotsCountBy_10k" prefHeight="25.0" prefWidth="149.0" text="-10000" />
+   <Button layoutX="95.0" layoutY="329.0" mnemonicParsing="false" onAction="#increaseDotsCountBy_10k" prefHeight="25.0" prefWidth="149.0" text="+10000" />
 </AnchorPane>

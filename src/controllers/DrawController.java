@@ -44,7 +44,8 @@ public class DrawController {
     }
 
     @FXML
-    void backToSetup(ActionEvent event) {
+    void backToSetup() {
+        clearFieldsAndStopDrawing();
         mainApp.showSetup();
     }
 
@@ -64,7 +65,7 @@ public class DrawController {
     }
 
     @FXML
-    void on_max_SpeedPressed(ActionEvent event) {
+    void on_max_SpeedPressed() {
         sleepTime_Millis = 1;
     }
 
@@ -109,8 +110,7 @@ public class DrawController {
     void onStartButtonPressed() {
         if (totalDots == dotsCountToApproximating) {
             sleepTime_Millis = 100;
-            isDrawing = true;
-            clearFields();
+            clearFieldsAndStopDrawing();
         }
         if (isDrawing) {
             start_stop_button.setText("start");
@@ -123,12 +123,13 @@ public class DrawController {
     }
 
     @FXML
-    void onClearButtonPressed(ActionEvent event) {
-        clearFields();
+    void onClearButtonPressed() {
+        clearFieldsAndStopDrawing();
     }
 
-    private void clearFields() {
+    private void clearFieldsAndStopDrawing() {
         isDrawing = false;
+        sleepTime_Millis=50;
         circleDots = 0;
         totalDots = 0;
         circleDotsCountTextField.setText("");

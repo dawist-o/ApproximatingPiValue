@@ -17,7 +17,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        primaryStage.setTitle("Pi");
+        primaryStage.setTitle("PI value visualization");
         initRootLayout();
         showSetup();
     }
@@ -35,6 +35,8 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+
+
 
     public void showSetup() {
         try {

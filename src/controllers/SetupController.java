@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 
 public class SetupController {
@@ -9,21 +10,39 @@ public class SetupController {
     private TextField dotsCountTextField;
 
     private final int MAX_DOTS_COUNT=50000;
-    private final int MIN_DOTS_COUNT=2000;
+    private final int MIN_DOTS_COUNT=5000;
+
+
 
     @FXML
-    void decreaseDotsCount() {
+    void decreaseDotsCountBy_5k() {
         int currentDotsCount=Integer.parseInt(dotsCountTextField.getText());
         if(currentDotsCount>MIN_DOTS_COUNT)
-            currentDotsCount-=2000;
+            currentDotsCount-=5000;
         dotsCountTextField.setText(Integer.toString(currentDotsCount));
     }
 
     @FXML
-    void increaseDotsCount() {
+    void increaseDotsCountBy_5k() {
         int currentDotsCount=Integer.parseInt(dotsCountTextField.getText());
         if(currentDotsCount<MAX_DOTS_COUNT)
-            currentDotsCount+=2000;
+            currentDotsCount+=5000;
+        dotsCountTextField.setText(Integer.toString(currentDotsCount));
+    }
+
+    @FXML
+    void decreaseDotsCountBy_10k() {
+        int currentDotsCount=Integer.parseInt(dotsCountTextField.getText());
+        if(currentDotsCount>MIN_DOTS_COUNT)
+            currentDotsCount-=10000;
+        dotsCountTextField.setText(Integer.toString(currentDotsCount));
+    }
+
+    @FXML
+    void increaseDotsCountBy_10k() {
+        int currentDotsCount=Integer.parseInt(dotsCountTextField.getText());
+        if(currentDotsCount<MAX_DOTS_COUNT)
+            currentDotsCount+=10000;
         dotsCountTextField.setText(Integer.toString(currentDotsCount));
     }
 
